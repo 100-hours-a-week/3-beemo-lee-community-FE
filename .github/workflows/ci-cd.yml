@@ -60,8 +60,8 @@ jobs:
             
             - name: Scp
               run: |
-                  ssh -i ~/.ssh/ec2-ssh-private-key.pem ${{ vars.EC2_SERVER_USER }}@${{ vars.EC2_SERVER_HOST }} "mkdir -p /home/${{ vars.CONTAINER_SERVER_USER }}/app"
-                  scp -i ~/.ssh/ec2-ssh-private-key.pem docker-compose.yml ${{ vars.EC2_SERVER_USER  }}@${{ vars.EC2_SERVER_HOST }}:/home/${{ vars.CONTAINER_SERVER_USER }}/app/
+                  ssh -i ~/.ssh/ec2-ssh-private-key.pem ${{ vars.EC2_SERVER_USER }}@${{ vars.EC2_SERVER_HOST }} "mkdir -p /home/${{ vars.EC2_SERVER_USER }}/app"
+                  scp -i ~/.ssh/ec2-ssh-private-key.pem docker-compose.yml ${{ vars.EC2_SERVER_USER  }}@${{ vars.EC2_SERVER_HOST }}:/home/${{ vars.EC2_SERVER_USER }}/app/
 
             - name: Check if Docker is installed
               id: check-docker
@@ -123,7 +123,7 @@ jobs:
             - name: Deploy to EC2 via Docker Compose
               run: |
                   ssh -i ~/.ssh/ec2-ssh-private-key.pem -o StrictHostKeyChecking=no ${{ vars.EC2_SERVER_USER }}@${{ vars.EC2_SERVER_HOST }} << EOF
-                      cd /home/${{ vars.CONTAINER_SERVER_USER }}/app
+                      cd /home/${{ vars.EC2_SERVER_USER }}/app
                       set -a
                       source /etc/docker-compose/${{ vars.DOCKER_IMG_NAME }}/environment
                       set +a
