@@ -1,6 +1,7 @@
 services:
   dev-community-ws:
-    build: .
-    env_file: .env
+    image: ${DOCKER_REG_ORG:-ljh09060}/${DOCKER_IMG_NAME:-community-ws}:${DOCKER_IMG_TAG:-latest}
+    environment:
+      - PORT=${CONTAINER_PORT:-3000}
     ports:
-      - "3000:3000"
+      - "${HOST_PORT:-3000}:${CONTAINER_PORT:-3000}"
