@@ -1,6 +1,6 @@
 services:
   dev-community-ws:
-    image: ${DOCKER_REG_ORG:-ljh09060}/${DOCKER_IMG_NAME:-community-ws}:${DOCKER_IMG_TAG:-latest}
+    image: ${DOCKER_REG_ORG:-example}/${DOCKER_IMG_NAME:-image-name}:${DOCKER_IMG_TAG:-latest}
     environment:
       - PORT=${CONTAINER_PORT:-3000}
     ports:
