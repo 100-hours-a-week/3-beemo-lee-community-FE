@@ -20,6 +20,6 @@ COPY --from=build --chown=node:node /app/node_modules ./node_modules
 COPY --from=build --chown=node:node /app/package*.json ./
 COPY --from=build --chown=node:node /app .
 
-EXPOSE 3000
+EXPOSE ${CONTAINER_PORT-3000}
 
 CMD ["npm", "start"]
